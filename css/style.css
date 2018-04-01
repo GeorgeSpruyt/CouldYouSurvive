@@ -1,0 +1,33 @@
+ #illus{
+     height: 300px;
+     width:500px;
+     display: inline-block;
+     border-radius:15%;
+     border: 5px solid red;
+      
+     box-shadow:10px 10px 10px blue;
+ }
+ .wrapper {
+     
+    text-align: center;
+   
+  }
+.mainColours{
+    font-family: 'Eater', cursive;
+    background-color: darkorange;
+    font-size: 24px;
+    padding: 16px;
+    
+}
+
+  #topper{
+    
+    display: inline-block;
+}
+
+html
+{
+    background-color: darkorange;
+}
+
+  
