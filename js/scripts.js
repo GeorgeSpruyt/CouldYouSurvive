@@ -1,5 +1,6 @@
 $(document).ready(function() {
  console.log("readY")
+  animations=['animated fadeInLeft','animated fadeInRight','animated zoomInRight','animated jello','animated tada','animated lightSpeedIn','animated flipInX'];
  theQuestions= [{
     image:"pic1.jpg",
     scenario:"Your favourite 3D solid is...",
@@ -15,11 +16,44 @@ $(document).ready(function() {
     scores:[0,50,100]
 
    },{
-    image:"pic3.jpg",
+    image:"Sketch010.jpg",
     scenario:"how you find being buried alive with your king?",
-    responses:["happy","I WANT TO DIE NOW GOD HELP!!!!!!","meh" ],
+    responses:["It would make me happy","I WANT TO DIE NOW GOD HELP!!!!!!","meh" ],
 
     scores:[100,0,50]
+
+   },
+   
+   {
+    image:"Sketch011.jpg",
+    scenario:"how smokey are your streets?",
+    responses:["what does smoky mean?","I can't see my friend from 3 streets away","I cough" ],
+
+    scores:[0,50,100]
+
+   },
+   {
+    image:"Sketch009.jpg",
+    scenario:"are you scared of mummies?",
+    responses:["AAAAAAAAAAAAAAAA","I sleep with one","yes" ],
+
+    scores:[50,50,50]
+
+   },
+   {
+    image:"Sketch013.jpg",
+    scenario:"What is a Pharoah",
+    responses:["A God","A King","A holiday destination in Portugal" ],
+
+    scores:[50,100,0]
+
+   },
+   {
+    image:"rosetta_stone_hieroglyphs.jpg",
+    scenario:"how do you write",
+    responses:["left to right","right to left","how the heck I want to" ],
+
+    scores:[50,50,100]
 
    },
   /* {
@@ -37,39 +71,11 @@ $(document).ready(function() {
 
     scores:[50,50,50]
 
-   },
-   {
-    image:"placehold.jpg",
-    scenario:"",
-    responses:["a","b","c" ],
-
-    scores:[50,50,50]
-
-   },
-   {
-    image:"placehold.jpg",
-    scenario:"",
-    responses:["a","b","c" ],
-
-    scores:[50,50,50]
-
-   },
-   {
-    image:"placehold.jpg",
-    scenario:"",
-    responses:["a","b","c" ],
-
-    scores:[50,50,50]
-
-   },
-   {
-    image:"placehold.jpg",
-    scenario:"",
-    responses:["a","b","c" ],
-
-    scores:[50,50,50]
-
    }*/]
+intro='';
+good='Do you have a time machine!?';
+notBad='Not bad, you might survive about a year.';
+rubbish='Maybe you should try Ancient Greece!'; 
 score=0;
 maxQs=theQuestions.length;
 currentQ=0;
@@ -91,14 +97,15 @@ document.getElementById("buttC").addEventListener("click", function(){
  
 var displayQuestion=(question)=>{
 
-document.getElementById("illus").src="./images/"+question.image;
-
+a=document.getElementById("illus").src="./images/"+question.image;
+ 
 
 document.getElementById("question").innerHTML=question.scenario;
 document.getElementById("resA").innerHTML=question.responses[0];
 document.getElementById("resB").innerHTML=question.responses[1];
 document.getElementById("resC").innerHTML=question.responses[2];
-
+console.log(animations[currentQ])
+$(illus).addClass(animations[currentQ]);
 
 
 }
@@ -143,15 +150,16 @@ restart=true;
 var sumUp=()=>{
   var maxTotal=maxQs*100;
   var judgement="";
-  if (score<(maxTotal/4)){judgement="Rubbish";
+  if (score<(maxTotal/4)){judgement=rubbish;
   document.getElementById("illus").src="./images/rubbish.jpg";}
-  else if (score>(maxTotal*0.75)){judgement="Super";
+  else if (score>(maxTotal*0.75)){judgement=good;
 document.getElementById("illus").src="./images/good.jpg"}
-    else {judgement="not bad";
+    else {judgement=notBad;
     document.getElementById("illus").src="./images/notbad.jpg";}
     document.getElementById("resA").innerHTML="";
 document.getElementById("resB").innerHTML="";
 document.getElementById("resC").innerHTML="";
 document.getElementById("question").style.fontSize = "200%";
 document.getElementById("question").innerHTML=judgement;
+$(illus).addClass('animated hinge');
 }
