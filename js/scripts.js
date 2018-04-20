@@ -26,7 +26,7 @@ $(document).ready(function() {
    
    {
     image:"Sketch011.jpg",
-    scenario:"how smokey are your streets?",
+    scenario:"how smoky are your streets?",
     responses:["what does smoky mean?","I can't see my friend from 3 streets away","I cough" ],
 
     scores:[0,50,100]
@@ -106,6 +106,7 @@ document.getElementById("resB").innerHTML=question.responses[1];
 document.getElementById("resC").innerHTML=question.responses[2];
 console.log(animations[currentQ])
 $(illus).addClass(animations[currentQ]);
+setTimeout(function(){ $(illus).removeClass(animations[currentQ]); }, 1000);
 
 
 }
@@ -151,9 +152,15 @@ var sumUp=()=>{
   var maxTotal=maxQs*100;
   var judgement="";
   if (score<(maxTotal/4)){judgement=rubbish;
-  document.getElementById("illus").src="./images/rubbish.jpg";}
+  document.getElementById("illus").src="./images/rubbish.jpg";
+  $(illus).addClass('animated hinge');
+  setTimeout(function(){ $(illus).removeClass('animated hinge'); }, 1000);}
   else if (score>(maxTotal*0.75)){judgement=good;
-document.getElementById("illus").src="./images/good.jpg"}
+document.getElementById("illus").src="./images/good.jpg";
+$(illus).addClass('animated tada');
+setTimeout(function(){ $(illus).removeClass('animated tada'); }, 1000);
+}
+
     else {judgement=notBad;
     document.getElementById("illus").src="./images/notbad.jpg";}
     document.getElementById("resA").innerHTML="";
@@ -161,5 +168,5 @@ document.getElementById("resB").innerHTML="";
 document.getElementById("resC").innerHTML="";
 document.getElementById("question").style.fontSize = "200%";
 document.getElementById("question").innerHTML=judgement;
-$(illus).addClass('animated hinge');
+
 }
