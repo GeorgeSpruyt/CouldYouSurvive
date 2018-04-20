@@ -106,7 +106,7 @@ document.getElementById("resB").innerHTML=question.responses[1];
 document.getElementById("resC").innerHTML=question.responses[2];
 console.log(animations[currentQ])
 $(illus).addClass(animations[currentQ]);
-setTimeout(function(){ $(illus).removeClass(animations[currentQ]); }, 1000);
+setTimeout(function(){ $(illus).removeClass(); }, 1000);
 
 
 }
@@ -153,16 +153,19 @@ var sumUp=()=>{
   var judgement="";
   if (score<(maxTotal/4)){judgement=rubbish;
   document.getElementById("illus").src="./images/rubbish.jpg";
-  $(illus).addClass('animated hinge');
-  setTimeout(function(){ $(illus).removeClass('animated hinge'); }, 1000);}
+  $(illus).addClass('animated rollIn');
+  setTimeout(function(){ $(illus).removeClass(); }, 1000);}
   else if (score>(maxTotal*0.75)){judgement=good;
 document.getElementById("illus").src="./images/good.jpg";
 $(illus).addClass('animated tada');
-setTimeout(function(){ $(illus).removeClass('animated tada'); }, 1000);
+setTimeout(function(){ $(illus).removeClass(); }, 1000);
 }
 
     else {judgement=notBad;
-    document.getElementById("illus").src="./images/notbad.jpg";}
+    document.getElementById("illus").src="./images/notbad.jpg";
+    $(illus).addClass('animated jackInTheBox');
+setTimeout(function(){ $(illus).removeClass(); }, 1000);
+    }
     document.getElementById("resA").innerHTML="";
 document.getElementById("resB").innerHTML="";
 document.getElementById("resC").innerHTML="";
